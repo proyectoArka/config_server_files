@@ -1,0 +1,13 @@
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+ms:
+  inventario:
+    sku: "SKU1827"
+    item: "wireless mouse"
+    quantity: 2

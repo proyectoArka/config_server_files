@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: MSAuthentication
+server:
+  port: 8098
+
+jwt:
+  secret-key: 4ba2e4c6c0eab7c2ed629fbdc76ac515a9a82d1d41ebfc483060ab8816544aa6
+  expiration: 3600000 # 1 hour in milliseconds
+
+logging:
+  level:
+    org:
+      springframework:
+        security:
+          web: DEBUG

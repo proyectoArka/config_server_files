@@ -1,0 +1,141 @@
+server:
+  port: 8093
+
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+          # AUTENTICACIÓN - RUTAS PÚBLICAS
+            # LOGIN - Ruta pública
+            - id: auth-login
+              uri: http://localhost:8098  # URI del MS-Authentication
+              predicates:
+                - Path=/api/v1/gateway/auth/login
+                - Method=POST
+              filters:
+                - RewritePath=/api/v1/gateway/auth/login, /api/auth/login
+
+            # CREAR CLIENTE - Ruta pública
+            - id: auth-create-client
+              uri: http://localhost:8098
+              predicates:
+                - Path=/api/v1/gateway/auth/createclient
+                - Method=POST
+              filters:
+                - RewritePath=/api/v1/gateway/auth/createclient, /api/auth/createclient
+
+            # REFRESH TOKEN - Ruta pública
+            - id: auth-refresh
+              uri: http://localhost:8098
+              predicates:
+                - Path=/api/v1/gateway/auth/refresh
+                - Method=POST
+              filters:
+                - RewritePath=/api/v1/gateway/auth/refresh, /api/auth/refresh
+
+          # AUTENTICACIÓN - RUTAS PROTEGIDAS
+            # CREAR ADMIN - Requiere permiso usuarios:crear_admin
+            - id: auth-create-admin
+              uri: http://localhost:8098
+              predicates:
+                - Path=/api/v1/gateway/auth/createadmin
+                - Method=POST
+              filters:
+                - AuthorizationFilter=usuarios:crear_admin
+                - RewritePath=/api/v1/gateway/auth/createadmin, /api/auth/createadmin
+          
+          # INVENTARIO - RUTAS PUBLICAS
+            # PRODUCTOS - LISTAR 
+            - id: productos-listar-public
+              uri: http://localhost:8080
+              predicates:
+                - Path=/api/v1/gateway/productos/listar
+                - Method=GET
+              filters:
+                - RewritePath=/api/v1/gateway/productos/listar, /api/v1/productos/listar
+            
+            # PRODUCTOS - BUSCAR POR ID
+            - id: productos-buscarID-public
+              uri: http://localhost:8080
+              predicates:
+                - Path=/api/v1/gateway/productos/buscar/{id}
+                - Method=GET
+              filters:
+                - RewritePath=/api/v1/gateway/productos/buscar/(?<id>.*), /api/v1/productos/buscar/${id}
+            
+            # PRODUCTOS - BUSCAR POR NOMBRE
+            - id: productos-buscar-nombre-public
+              uri: http://localhost:8080
+              predicates:
+                - Path=/api/v1/gateway/productos/buscarProductos/{nombre}
+                - Method=GET
+              filters:
+                - RewritePath=/api/v1/gateway/productos/buscarProductos/(?<nombre>.*), /api/v1/productos/buscarProductos/${nombre}
+          
+          # INVENTARIO - RUTAS PROTEGIDAS
+            # PRODUCTOS - CREAR PRODUCTO
+            - id: productos-crear
+              uri: http://localhost:8080
+              predicates:
+                - Path=/api/v1/gateway/productos/crear
+                - Method=POST
+              filters:
+                - AuthorizationFilter=productos:CRUD
+                - RewritePath=/api/v1/gateway/productos/crear, /api/v1/productos/crear
+            
+            # PRODUCTOS - ACTUALIZAR PRODUCTO
+            - id: productos-actualizar
+              uri: http://localhost:8080
+              predicates:
+                - Path=/api/v1/gateway/productos/actualizar/{query}
+                - Method=PUT,PATCH
+              filters:
+                - AuthorizationFilter=productos:CRUD
+                - RewritePath=/api/v1/gateway/productos/actualizar/(?<query>.*), /api/v1/productos/actualizar/${query}
+            
+            # CATEGORIAS - CREAR CATEGORIA
+            - id: categorias-crear
+              uri: http://localhost:8080
+              predicates:
+                - Path=/api/v1/gateway/categoria/nuevacategoria
+                - Method=POST
+              filters:
+                - AuthorizationFilter=productos:CRUD
+                - RewritePath=/api/v1/gateway/categoria/nuevacategoria, /api/v1/categoria/nuevacategoria
+
+            # CART - RUTAS PROTEGIDAS
+              # CART - crear carrito para un cliente
+            - id: cart-crear-carrito
+              uri: http://localhost:8090
+              predicates:
+                - Path=/api/v1/gateway/carts
+                - Method=GET
+              filters:
+                - AuthorizationFilter=cart:items
+                - RewritePath=/api/v1/gateway/carts, /api/v1/carts
+
+              # CART - AGREGAR PRODUCTO AL CARRITO
+            - id: cart-agregar-producto
+              uri: http://localhost:8090
+              predicates:
+                - Path=/api/v1/gateway/carts/items
+                - Method=POST
+              filters:
+                - AuthorizationFilter=cart:items
+                - RewritePath=/api/v1/gateway/carts/items, /api/v1/carts/items
+
+    discovery:
+      locator:
+        enabled: true
+        lower-case-service-id: true
+
+logging:
+  level:
+    org.springframework.cloud: DEBUG
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.cloud.gateway.route.RouteDefinitionLocator: DEBUG
+jwt:
+  secret-key: 4ba2e4c6c0eab7c2ed629fbdc76ac515a9a82d1d41ebfc483060ab8816544aa6
+  expiration: 3600000
