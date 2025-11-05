@@ -16,3 +16,8 @@ logging:
     io.r2dbc.postgresql.QUERY: DEBUG  # Ver queries SQL ejecutadas
     io.r2dbc.postgresql.PARAM: DEBUG  # Ver parámetros de las queries
     com.tuempresa.cart: DEBUG          # Ver logs de tu aplicación
+
+ms:
+  inventario:
+    baseUri: "lb://MSInventario"
+    uriPath: "/api/v1/productos/stockprice/{id}"
