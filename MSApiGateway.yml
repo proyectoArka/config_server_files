@@ -43,7 +43,7 @@ spring:
                 - Path=/api/v1/gateway/auth/createadmin
                 - Method=POST
               filters:
-                - AuthorizationFilter=usuarios:crear_admin
+                - AuthorizationFilter=createadmin
                 - RewritePath=/api/v1/gateway/auth/createadmin, /api/auth/createadmin
           
           # INVENTARIO - RUTAS PUBLICAS
