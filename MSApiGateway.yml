@@ -110,11 +110,11 @@ spring:
             - id: cart-agregar-producto
               uri: http://localhost:8090
               predicates:
-                - Path=/api/v1/gateway/carts/AgregarProducto
+                - Path=/api/v1/gateway/carts/agregarproducto
                 - Method=POST
               filters:
                 - AuthorizationFilter=Cart:Crud
-                - RewritePath=/api/v1/gateway/carts/AgregarProducto, /api/v1/carts/AgregarProducto
+                - RewritePath=/api/v1/gateway/carts/agregarproducto, /api/v1/carts/agregarproducto
 
     discovery:
       locator:
