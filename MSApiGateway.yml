@@ -43,7 +43,7 @@ spring:
                 - Path=/api/v1/gateway/auth/createadmin
                 - Method=POST
               filters:
-                - AuthorizationFilter=createadmin
+                - AuthorizationFilter=CreateAdmin
                 - RewritePath=/api/v1/gateway/auth/createadmin, /api/auth/createadmin
           
           # INVENTARIO - RUTAS PUBLICAS
@@ -113,7 +113,7 @@ spring:
                 - Path=/api/v1/gateway/carts
                 - Method=GET
               filters:
-                - AuthorizationFilter=cart:Crud
+                - AuthorizationFilter=Cart:Crud
                 - RewritePath=/api/v1/gateway/carts, /api/v1/carts
 
               # CART - AGREGAR PRODUCTO AL CARRITO
@@ -123,7 +123,7 @@ spring:
                 - Path=/api/v1/gateway/carts/items
                 - Method=POST
               filters:
-                - AuthorizationFilter=cart:Crud
+                - AuthorizationFilter=Cart:Crud
                 - RewritePath=/api/v1/gateway/carts/items, /api/v1/carts/items
 
     discovery:
