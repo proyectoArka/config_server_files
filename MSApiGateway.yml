@@ -106,25 +106,15 @@ spring:
                 - RewritePath=/api/v1/gateway/categoria/nuevacategoria, /api/v1/categoria/nuevacategoria
 
             # CART - RUTAS PROTEGIDAS
-              # CART - crear carrito para un cliente
-            - id: cart-crear-carrito
-              uri: http://localhost:8090
-              predicates:
-                - Path=/api/v1/gateway/carts
-                - Method=GET
-              filters:
-                - AuthorizationFilter=Cart:Crud
-                - RewritePath=/api/v1/gateway/carts, /api/v1/carts
-
-              # CART - AGREGAR PRODUCTO AL CARRITO
+              # CART - agregar producto al carrito
             - id: cart-agregar-producto
               uri: http://localhost:8090
               predicates:
-                - Path=/api/v1/gateway/carts/items
+                - Path=/api/v1/gateway/carts/AgregarProducto
                 - Method=POST
               filters:
                 - AuthorizationFilter=Cart:Crud
-                - RewritePath=/api/v1/gateway/carts/items, /api/v1/carts/items
+                - RewritePath=/api/v1/gateway/carts/AgregarProducto, /api/v1/carts/AgregarProducto
 
     discovery:
       locator:
