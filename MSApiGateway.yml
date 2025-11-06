@@ -138,11 +138,11 @@ spring:
             - id: cart-vaciar-carrito
               uri: http://localhost:8090
               predicates:
-                - Path=/api/v1/gateway/carts/vaciarcarrito/{userid}
+                - Path=/api/v1/gateway/carts/vaciarcarrito
                 - Method=DELETE
               filters:
                 - AuthorizationFilter=Cart:Crud
-                - RewritePath=/api/v1/gateway/carts/vaciarcarrito/(?<userid>.*), /api/v1/carts/vaciarcarrito/${userid}
+                - RewritePath=/api/v1/gateway/carts/vaciarcarrito, /api/v1/carts/vaciarcarrito
 
     discovery:
       locator:
