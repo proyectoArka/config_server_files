@@ -125,6 +125,24 @@ spring:
               filters:
                 - AuthorizationFilter=Cart:Crud
                 - RewritePath=/api/v1/gateway/carts/eliminarproducto/(?<id>.*), /api/v1/carts/eliminarproducto/${id}
+            # CART - ver carrito por ID de usuario
+            - id: cart-ver-carrito
+              uri: http://localhost:8090
+              predicates:
+                - Path=/api/v1/gateway/carts/vercarrito/{userid}
+                - Method=GET
+              filters:
+                - AuthorizationFilter=Cart:Crud
+                - RewritePath=/api/v1/gateway/carts/vercarrito/(?<userid>.*), /api/v1/carts/vercarrito/${userid}
+            # CART - vaciar carrito por ID de usuario
+            - id: cart-vaciar-carrito
+              uri: http://localhost:8090
+              predicates:
+                - Path=/api/v1/gateway/carts/vaciarcarrito/{userid}
+                - Method=DELETE
+              filters:
+                - AuthorizationFilter=Cart:Crud
+                - RewritePath=/api/v1/gateway/carts/vaciarcarrito/(?<userid>.*), /api/v1/carts/vaciarcarrito/${userid}
 
     discovery:
       locator:
