@@ -115,6 +115,16 @@ spring:
               filters:
                 - AuthorizationFilter=Cart:Crud
                 - RewritePath=/api/v1/gateway/carts/agregarproducto, /api/v1/carts/agregarproducto
+                
+            # CART - eliminar producto del carrito
+            - id: cart-eliminar-producto
+              uri: http://localhost:8090
+              predicates:
+                - Path=/api/v1/gateway/carts/eliminarproducto/{id}
+                - Method=DELETE
+              filters:
+                - AuthorizationFilter=Cart:Crud
+                - RewritePath=/api/v1/gateway/carts/eliminarproducto/(?<id>.*), /api/v1/carts/eliminarproducto/${id}
 
     discovery:
       locator:
