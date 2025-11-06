@@ -129,11 +129,11 @@ spring:
             - id: cart-ver-carrito
               uri: http://localhost:8090
               predicates:
-                - Path=/api/v1/gateway/carts/vercarrito/{userid}
+                - Path=/api/v1/gateway/carts/vercarrito
                 - Method=GET
               filters:
                 - AuthorizationFilter=Cart:Crud
-                - RewritePath=/api/v1/gateway/carts/vercarrito/(?<userid>.*), /api/v1/carts/vercarrito/${userid}
+                - RewritePath=/api/v1/gateway/carts/vercarrito, /api/v1/carts/vercarrito
             # CART - vaciar carrito por ID de usuario
             - id: cart-vaciar-carrito
               uri: http://localhost:8090
