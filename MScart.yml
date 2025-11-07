@@ -21,6 +21,9 @@ ms:
   inventario:
     baseUri: "lb://MSInventario"
     uriPath: "/api/v1/productos/stockprice/{id}"
+  auth:
+    baseUri: "lb://MSAuth"
+    uriPath: "/api/v1/auth/ConsulUser/{username}"
   cart:
     abandonCart:
       time: 2 # tiempo en minutos para considerar un carrito abandonado
