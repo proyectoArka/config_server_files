@@ -22,7 +22,7 @@ ms:
     baseUri: "lb://MSInventario"
     uriPath: "/api/v1/productos/stockprice/{id}"
   auth:
-    baseUri: "lb://MSAuth"
+    baseUri: "lb://MSAuthentication"
     uriPath: "/api/v1/auth/consuluser/{id}"
   cart:
     abandonCart:
