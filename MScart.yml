@@ -25,4 +25,4 @@ ms:
     abandonCart:
       time: 1 # tiempo en minutos para considerar un carrito abandonado
     functionAbandonCart:
-      time: 2 # tiempo en minutos para ejecutar la función de carrito abandonado
+      time: 0.5 # tiempo en minutos para ejecutar la función de carrito abandonado
