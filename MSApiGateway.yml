@@ -143,7 +143,16 @@ spring:
               filters:
                 - AuthorizationFilter=Cart:Crud
                 - RewritePath=/api/v1/gateway/carts/vaciarcarrito, /api/v1/carts/vaciarcarrito
-
+            
+            # CART ADMIN - ver todos los carritos (requiere permiso CartAdmin:Crud)
+            - id: cart-ver-todos-carritos 
+              uri: http://localhost:8090
+              predicates:
+                - Path=/api/v1/gateway/cartsadmin/all
+                - Method=GET
+              filters:
+                - AuthorizationFilter=CartAdmin:Crud
+                - RewritePath=/api/v1/gateway/cartsadmin/all, /api/v1/cartsadmin/all
     discovery:
       locator:
         enabled: true
