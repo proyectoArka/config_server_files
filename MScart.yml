@@ -23,6 +23,6 @@ ms:
     uriPath: "/api/v1/productos/stockprice/{id}"
   cart:
     abandonCart:
-      time: 1 # tiempo en minutos para considerar un carrito abandonado
+      time: 2 # tiempo en minutos para considerar un carrito abandonado
     functionAbandonCart:
-      time: 0.5 # tiempo en minutos para ejecutar la función de carrito abandonado
+      time: 1 # tiempo en minutos para ejecutar la función de carrito abandonado
