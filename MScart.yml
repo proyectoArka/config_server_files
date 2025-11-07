@@ -23,7 +23,7 @@ ms:
     uriPath: "/api/v1/productos/stockprice/{id}"
   auth:
     baseUri: "lb://MSAuthentication"
-    uriPath: "/api/v1/auth/consuluser/{id}"
+    uriPath: "/api/auth/consuluser/{id}"
   cart:
     abandonCart:
       time: 2 # tiempo en minutos para considerar un carrito abandonado
