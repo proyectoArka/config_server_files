@@ -163,6 +163,17 @@ spring:
               filters:
                 - AuthorizationFilter=CartAdmin:Crud
                 - RewritePath=/api/v1/gateway/cartsadmin/cartabandonados, /api/v1/cartsadmin/cartabandonados
+
+            # CART ADMIN - ver carritos por ID del Carrito (requiere permiso CartAdmin:Crud)
+            - id: cart-ver-carrito-por-id
+              uri: http://localhost:8090
+              predicates:
+                - Path=/api/v1/gateway/cartsadmin/cartid/{id}
+                - Method=GET
+              filters:
+                - AuthorizationFilter=CartAdmin:Crud
+                - RewritePath=/api/v1/gateway/cartsadmin/cartid/(?<id>.*), /api/v1/cartsadmin/cartid/${id}
+
     discovery:
       locator:
         enabled: true
