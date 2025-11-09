@@ -32,3 +32,4 @@ ms:
 lambda:
     email:
       url: "https://5b91j031fi.execute-api.us-east-1.amazonaws.com/dev/send-email"
+      time: 2 # tiempo en minutos para enviar el email de carrito abandonado
