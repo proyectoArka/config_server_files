@@ -29,3 +29,7 @@ ms:
       time: 2 # tiempo en minutos para considerar un carrito abandonado
     functionAbandonCart:
       time: 1 # tiempo en minutos para ejecutar la función de carrito abandonado
+    functionEnviarEmail:
+      url: "https://5b91j031fi.execute-api.us-east-1.amazonaws.com/dev/send-email"
+    functionSendEmailAbandonedCart:
+      time: 2 # tiempo en minutos para ejecutar la función de envío de email
