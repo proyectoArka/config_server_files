@@ -26,10 +26,10 @@ ms:
     uriPath: "/api/auth/consuluser/{id}"
   cart:
     abandonCart:
-      time: 2 # tiempo en minutos para considerar un carrito abandonado
+      time: 20 # tiempo en minutos para considerar un carrito abandonado
     functionAbandonCart:
-      time: 1 # tiempo en minutos para ejecutar la función de carrito abandonado
+      time: 5 # tiempo en minutos para ejecutar la función de carrito abandonado
 lambda:
     email:
-      cron-expression: "0 */2 * * * *" # tiempo en minutos para enviar el email de carrito abandonado
+      cron-expression: "0 */6 * * * *" # tiempo en minutos para enviar el email de carrito abandonado
       url: "https://5b91j031fi.execute-api.us-east-1.amazonaws.com/dev/send-email"
