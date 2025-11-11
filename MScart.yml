@@ -1,21 +1,6 @@
 server:
   port: 8090
 
-spring:
-  r2dbc:
-    url: r2dbc:postgresql://localhost:5432/arka_db 
-    username: postgres
-    password: 123
-    pool:
-      initial-size: 5
-      max-size: 20
-
-
-logging:
-  level:
-    io.r2dbc.postgresql.QUERY: DEBUG  # Ver queries SQL ejecutadas
-    io.r2dbc.postgresql.PARAM: DEBUG  # Ver parámetros de las queries
-    com.tuempresa.cart: DEBUG          # Ver logs de tu aplicación
 
 ms:
   inventario:

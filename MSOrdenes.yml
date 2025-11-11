@@ -1,6 +1,0 @@
-server:
-  port: 8095
-
-ms:
-  inventario:
-    uri: "/api/v1/productos/hola"
