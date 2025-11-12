@@ -143,7 +143,16 @@ spring:
               filters:
                 - AuthorizationFilter=Cart:Crud
                 - RewritePath=/api/v1/gateway/carts/vaciarcarrito, /api/v1/carts/vaciarcarrito
-            
+            # CART - finalizar compra
+            - id: cart-finalizar-compra
+              uri: http://localhost:8090
+              predicates:
+                - Path=/api/v1/gateway/carts/realizarcompra
+                - Method=GET
+              filters:
+                - AuthorizationFilter=Cart:Crud
+                - RewritePath=/api/v1/gateway/carts/realizarcompra, /api/v1/carts/realizarcompra
+
             # CART ADMIN - ver todos los carritos (requiere permiso CartAdmin:Crud)
             - id: cart-ver-todos-carritos 
               uri: http://localhost:8090
