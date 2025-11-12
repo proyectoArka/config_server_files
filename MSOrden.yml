@@ -7,4 +7,4 @@ ms:
     uriPath: "/api/v1/productos/stockprice/{id}"
   inventarioActualizar:
     baseUri: "lb://MSInventario"
-    uriPath: "/api/v1//api/v1/productos/actualizar/{id}"
+    uriPath: "/api/v1/productos/actualizar/{id}"
