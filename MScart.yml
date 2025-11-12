@@ -9,6 +9,9 @@ ms:
   auth:
     baseUri: "lb://MSAuthentication"
     uriPath: "/api/auth/consuluser/{id}"
+  orden:
+    baseUri: "lb://MSOrden"
+    uriPath: "/api/v1/ordenes/neworden"
   cart:
     abandonCart:
       time: 20 # tiempo en minutos para considerar un carrito abandonado
