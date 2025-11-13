@@ -182,6 +182,15 @@ spring:
               filters:
                 - AuthorizationFilter=CartAdmin:Crud
                 - RewritePath=/api/v1/gateway/cartsadmin/cartid/(?<id>.*), /api/v1/cartsadmin/cartid/${id}
+            # ORDEN - VER ORDENES POR ID DE USUARIO
+            - id: orden-ver-ordenes-por-usuario
+              uri: http://localhost:8095
+              predicates:
+                - Path=/api/v1/gateway/ordenes/usuario
+                - Method=GET
+              filters:
+                - AuthorizationFilter=Orden:Crud
+                - RewritePath=/api/v1/gateway/ordenes/usuario, /api/v1/ordenes/usuario
 
     discovery:
       locator:
