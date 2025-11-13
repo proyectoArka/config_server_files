@@ -182,12 +182,12 @@ spring:
               filters:
                 - AuthorizationFilter=CartAdmin:Crud
                 - RewritePath=/api/v1/gateway/cartsadmin/cartid/(?<id>.*), /api/v1/cartsadmin/cartid/${id}
-            # ORDEN - VER ORDENES POR ID DE USUARIO
-            - id: orden-ver-ordenes-por-usuario
+            # ORDEN - Editar orden por usuario
+            - id: Editar-orden-por-usuario
               uri: http://localhost:8095
               predicates:
                 - Path=/api/v1/gateway/ordenes/editarorden
-                - Method=GET
+                - Method=POST
               filters:
                 - AuthorizationFilter=Orden:Crud
                 - RewritePath=/api/v1/gateway/ordenes/editarorden, /api/v1/ordenes/editarorden
