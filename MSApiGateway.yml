@@ -186,12 +186,11 @@ spring:
             - id: orden-ver-ordenes-por-usuario
               uri: http://localhost:8095
               predicates:
-                - Path=/api/v1/gateway/ordenes/usuario
+                - Path=/api/v1/gateway/ordenes/editarorden
                 - Method=GET
               filters:
                 - AuthorizationFilter=Orden:Crud
-                - RewritePath=/api/v1/gateway/ordenes/usuario, /api/v1/ordenes/usuario
-
+                - RewritePath=/api/v1/gateway/ordenes/editarorden, /api/v1/ordenes/editarorden
     discovery:
       locator:
         enabled: true
