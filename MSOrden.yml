@@ -8,3 +8,6 @@ ms:
   inventarioActualizar:
     baseUri: "lb://MSInventario"
     uriPath: "/api/v1/productos/actualizar/{id}"
+  auth:
+    baseUri: "lb://MSAuthentication"
+    uriPath: "/api/auth/consuluser/{id}"
