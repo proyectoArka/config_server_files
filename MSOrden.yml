@@ -11,3 +11,10 @@ ms:
   auth:
     baseUri: "lb://MSAuthentication"
     uriPath: "/api/auth/consuluser/{id}"
+
+spring:
+  # --- Configuración de MongoDB Reactive ---
+  data:
+    mongodb:
+      # Usa la DB que ya creaste o vas a usar
+      uri: mongodb://localhost:27017/arka_db_mongo
