@@ -45,7 +45,15 @@ spring:
               filters:
                 - AuthorizationFilter=CreateAdmin
                 - RewritePath=/api/v1/gateway/auth/createadmin, /api/auth/createadmin
-          
+            # UPDATE INFO USER - Requiere permiso usuarios
+            - id: auth-update-userinfo
+              uri: http://localhost:8098
+              predicates:
+                - Path=/api/v1/gateway/auth/updateuserinfo
+                - Method=PUT,PATCH
+              filters:
+                - AuthorizationFilter=UpdateUserInfo
+                - RewritePath=/api/v1/gateway/auth/updateuserinfo, /api/auth/updateuserinfo
           # INVENTARIO - RUTAS PUBLICAS
             # PRODUCTOS - LISTAR 
             - id: productos-listar-public
