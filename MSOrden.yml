@@ -11,3 +11,7 @@ ms:
   auth:
     baseUri: "lb://MSAuthentication"
     uriPath: "/api/auth/consuluser/{id}"
+lambda:
+    email:
+      cron-expression: "0 */6 * * * *" # tiempo en minutos para enviar el email de carrito abandonado
+      url: "https://5b91j031fi.execute-api.us-east-1.amazonaws.com/dev/send-email"
