@@ -208,6 +208,28 @@ spring:
               filters:
                 - AuthorizationFilter=Orden:Crud
                 - RewritePath=/api/v1/gateway/ordenes/confirmarorden, /api/v1/ordenes/confirmarorden
+            
+            # ORDEN - poner en despacho una orden
+            - id: Poner-en-despacho-orden
+              uri: http://localhost:8095
+              predicates:
+                - Path=/api/v1/gateway/ordenes/despacharorden/{id}
+                - Method=PATCH
+              filters:
+                - AuthorizationFilter=OrdenAdmin:Crud
+                - RewritePath=/api/v1/gateway/ordenes/despacharorden/(?<id>.*), /api/v1/ordenes/despacharorden/${id}
+
+            # Orden - poner en orden entregada 
+            - id: entregada-una-orden
+              uri: http://localhost:8095
+              predicates:
+                - Path=/api/v1/gateway/ordenes/entregarorden/{id}
+                - Method=PATCH
+              filters:
+                - AuthorizationFilter=OrdenAdmin:Crud
+                - RewritePath=/api/v1/gateway/ordenes/entregarorden/(?<id>.*), /api/v1/ordenes/entregarorden/${id}
+
+
     discovery:
       locator:
         enabled: true
