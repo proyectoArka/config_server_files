@@ -199,6 +199,15 @@ spring:
               filters:
                 - AuthorizationFilter=Orden:Crud
                 - RewritePath=/api/v1/gateway/ordenes/editarorden, /api/v1/ordenes/editarorden
+            # ORDEN - CONFIRMAR ORDEN
+            - id: Confirmar-orden
+              uri: http://localhost:8095
+              predicates:
+                - Path=/api/v1/gateway/ordenes/confirmarorden
+                - Method=GET
+              filters:
+                - AuthorizationFilter=Orden:Crud
+                - RewritePath=/api/v1/gateway/ordenes/confirmarorden, /api/v1/ordenes/confirmarorden
     discovery:
       locator:
         enabled: true
