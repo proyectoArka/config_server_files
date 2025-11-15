@@ -237,6 +237,17 @@ spring:
               filters:
                 - AuthorizationFilter=OrdenAdmin:Crud
                 - RewritePath=/api/v1/gateway/ordenes/admin/todaslasordenes, /api/v1/ordenes/admin/todaslasordenes
+            
+            # ORDEN ADMIN - ver detalle de una orden por ID
+            - id: ver-detalle-orden-por-id
+              uri: http://localhost:8095
+              predicates:
+                - Path=/api/v1/gateway/ordenes/admin/detalleorden/{id}
+                - Method=GET
+              filters:
+                - AuthorizationFilter=OrdenAdmin:Crud
+                - RewritePath=/api/v1/gateway/ordenes/admin/detalleorden/(?<id>.*), /api/v1/ordenes/admin/detalleorden/${id}
+    
     discovery:
       locator:
         enabled: true
