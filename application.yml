@@ -39,6 +39,7 @@ management:
   endpoints:
     web:
       exposure:
+        # ¡DEBE ser bus-refresh con el guion!
         include: bus-refresh,refresh,health,info,metrics
   endpoint:
     health:
