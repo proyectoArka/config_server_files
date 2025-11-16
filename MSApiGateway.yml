@@ -91,7 +91,7 @@ spring:
                 - Method=POST
               filters:
                 - AuthorizationFilter=Inventario:Crud
-                - RewritePath=/api/v1/gateway/productos/crear, /api/v1/productos/crear
+                - RewritePath=/api/v1/gateway/productos/crear, /api/productos/crear
             
             # PRODUCTOS - ACTUALIZAR PRODUCTO
             - id: productos-actualizar
