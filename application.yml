@@ -26,6 +26,23 @@ spring:
     port: 5672
     username: admin
     password: admin123
+
+  # Spring Cloud Bus para refresh automático
+  cloud:
+    bus:
+      enabled: true
+      refresh:
+        enabled: true
+
+# Actuator endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: busrefresh,refresh,health,info,metrics
+  endpoint:
+    health:
+      show-details: always
       
 logging:
   level:
