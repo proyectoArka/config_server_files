@@ -21,6 +21,11 @@ spring:
     pool:
       initial-size: 5
       max-size: 20
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin123
       
 logging:
   level:
@@ -39,3 +44,4 @@ eureka:
   instance:
     hostname: localhost
     prefer-ip-address: true
+
