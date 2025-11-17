@@ -247,7 +247,16 @@ spring:
               filters:
                 - AuthorizationFilter=OrdenAdmin:Crud
                 - RewritePath=/api/v1/gateway/ordenes/admin/detalleorden/(?<id>.*), /api/v1/ordenes/admin/detalleorden/${id}
-    
+
+            # ORDEN CLIENTE - eliminar producto de una orden por ID de producto
+            - id: eliminar-orden-por-usuario
+              uri: http://localhost:8095
+              predicates:
+                - Path=/api/v1/gateway/ordenes/eliminarproducto/{id}
+                - Method=DELETE
+              filters:
+                - AuthorizationFilter=Orden:Crud
+                - RewritePath=/api/v1/gateway/ordenes/eliminarproducto/(?<id>.*), /api/v1/ordenes/eliminarproducto/${id}
     discovery:
       locator:
         enabled: true
