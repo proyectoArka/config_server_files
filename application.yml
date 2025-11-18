@@ -1,8 +1,7 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/arka_db
-    username: postgres
-    password: "123"
+    # username y password se obtienen de Vault (secret/application)
     driver-class-name: org.postgresql.Driver
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
@@ -16,16 +15,14 @@ spring:
           time_zone: UTC
   r2dbc:
     url: r2dbc:postgresql://localhost:5432/arka_db 
-    username: postgres
-    password: 123
+    # username y password se obtienen de Vault (secret/application)
     pool:
       initial-size: 5
       max-size: 20
   rabbitmq:
     host: localhost
     port: 5672
-    username: admin
-    password: admin123
+    # username y password se obtienen de Vault (secret/application)
 
   # Spring Cloud Bus para refresh automático
   cloud:
