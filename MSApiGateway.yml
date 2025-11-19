@@ -113,6 +113,36 @@ spring:
                 - AuthorizationFilter=Inventario:Crud
                 - RewritePath=/api/v1/gateway/categoria/nuevacategoria, /api/v1/categoria/nuevacategoria
 
+            # CATEGORIAS - OPTENER TODAS LAS CATEGORIAS
+            - id: categorias-obtener-todas
+              uri: http://localhost:8080
+              predicates:
+                - Path=/api/v1/gateway/categoria
+                - Method=GET
+              filters:
+                - AuthorizationFilter=Inventario:Crud
+                - RewritePath=/api/v1/gateway/categoria, /api/v1/categoria
+            
+            # CATEGORIAS - ACTUALIZAR CATEGORIA
+            - id: categorias-actualizar
+              uri: http://localhost:8080
+              predicates:
+                - Path=/api/v1/gateway/categoria/{id}
+                - Method=PUT,PATCH
+              filters:
+                - AuthorizationFilter=Inventario:Crud
+                - RewritePath=/api/v1/gateway/categoria/(?<id>.*), /api/v1/categoria/${id}
+
+            # CATEGORIAS - ELIMINAR CATEGORIA
+            - id: categorias-eliminar
+              uri: http://localhost:8080
+              predicates:
+                - Path=/api/v1/gateway/categoria/{id}
+                - Method=DELETE
+              filters:
+                - AuthorizationFilter=Inventario:Crud
+                - RewritePath=/api/v1/gateway/categoria/(?<id>.*), /api/v1/categoria/${id}
+
             # CART - RUTAS PROTEGIDAS
               # CART - agregar producto al carrito
             - id: cart-agregar-producto
@@ -276,7 +306,6 @@ spring:
               filters:
                 - AuthorizationFilter=OrdenAdmin:Crud
                 - RewritePath=/api/v1/gateway/ordenes/admin/detalleorden/(?<id>.*), /api/v1/ordenes/admin/detalleorden/${id}
-            
             
 
     discovery:
