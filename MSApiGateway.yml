@@ -103,6 +103,16 @@ spring:
                 - AuthorizationFilter=Inventario:Crud
                 - RewritePath=/api/v1/gateway/productos/actualizar/(?<query>.*), /api/v1/productos/actualizar/${query}
             
+            # PRODUCTOS - ELIMINAR PRODUCTO
+            - id: productos-eliminar
+              uri: http://localhost:8080
+              predicates:
+                - Path=/api/v1/gateway/productos/baja/{id}
+                - Method=DELETE
+              filters:
+                - AuthorizationFilter=Inventario:Crud
+                - RewritePath=/api/v1/gateway/productos/baja/(?<id>.*), /api/v1/productos/baja/${id}
+                
             # CATEGORIAS - CREAR CATEGORIA
             - id: categorias-crear
               uri: http://localhost:8080
