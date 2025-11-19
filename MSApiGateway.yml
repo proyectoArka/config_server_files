@@ -257,6 +257,28 @@ spring:
               filters:
                 - AuthorizationFilter=Orden:Crud
                 - RewritePath=/api/v1/gateway/ordenes/eliminarproducto/(?<id>.*), /api/v1/ordenes/eliminarproducto/${id}
+            # ORDEN ADMIN - VER TODAS LAS ORDENES
+            - id: ver-todas-las-ordenes-admin
+              uri: http://localhost:8095
+              predicates:
+                - Path=/api/v1/gateway/ordenes/admin/todaslasordenes
+                - Method=GET
+              filters:
+                - AuthorizationFilter=OrdenAdmin:Crud
+                - RewritePath=/api/v1/gateway/ordenes/admin/todaslasordenes, /api/v1/ordenes/admin/todaslasordenes
+            
+            # ORDEN ADMIN - MOSTAR ORDEN POR ID
+            - id: mostrar-orden-por-id-admin
+              uri: http://localhost:8095
+              predicates:
+                - Path=/api/v1/gateway/ordenes/admin/detalleorden/{id}
+                - Method=GET
+              filters:
+                - AuthorizationFilter=OrdenAdmin:Crud
+                - RewritePath=/api/v1/gateway/ordenes/admin/detalleorden/(?<id>.*), /api/v1/ordenes/admin/detalleorden/${id}
+            
+            
+
     discovery:
       locator:
         enabled: true
