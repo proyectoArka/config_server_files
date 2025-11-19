@@ -108,7 +108,7 @@ spring:
               uri: http://localhost:8080
               predicates:
                 - Path=/api/v1/gateway/productos/baja/{id}
-                - Method=DELETE
+                - Method=PATCH
               filters:
                 - AuthorizationFilter=Inventario:Crud
                 - RewritePath=/api/v1/gateway/productos/baja/(?<id>.*), /api/v1/productos/baja/${id}
@@ -132,7 +132,7 @@ spring:
               filters:
                 - AuthorizationFilter=Inventario:Crud
                 - RewritePath=/api/v1/gateway/productos/stock-bajo, /api/v1/productos/stock-bajo
-                
+
             # CATEGORIAS - CREAR CATEGORIA
             - id: categorias-crear
               uri: http://localhost:8080
