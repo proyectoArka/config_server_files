@@ -112,6 +112,26 @@ spring:
               filters:
                 - AuthorizationFilter=Inventario:Crud
                 - RewritePath=/api/v1/gateway/productos/baja/(?<id>.*), /api/v1/productos/baja/${id}
+
+            # HISTORIAL STOCK - VER HISTORIAL POR ID DE PRODUCTO
+            - id: historial-stock-por-producto
+              uri: http://localhost:8080
+              predicates:
+                - Path=/api/v1/gateway/productos/historial-stock/{id}
+                - Method=GET
+              filters:
+                - AuthorizationFilter=Inventario:Crud
+                - RewritePath=/api/v1/gateway/productos/historial-stock/(?<id>.*), /api/v1/productos/historial-stock/${id}
+
+            # PRODUCTOS CON STOCK BAJO
+            - id: productos-stock-bajo
+              uri: http://localhost:8080
+              predicates:
+                - Path=/api/v1/gateway/productos/stock-bajo
+                - Method=GET
+              filters:
+                - AuthorizationFilter=Inventario:Crud
+                - RewritePath=/api/v1/gateway/productos/stock-bajo, /api/v1/productos/stock-bajo
                 
             # CATEGORIAS - CREAR CATEGORIA
             - id: categorias-crear
